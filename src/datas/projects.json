@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "HR Management",
+        "description": "Human resource management system for the HR department and 100+ employees of the company. Key features include: Timesheet, Leave request, Payroll,...",
+        "techStack": "Vue3, Bootstrap, TypeScript, Git, Gitlab",
+        "teamSize": "6",
+        "role": "Front-end Developer",
+        "company": "Teanis Technologies",
+        "time": "Jul 2021 - Present"
+    },
+    {
+        "id": 2,
+        "name": "Yeahfit",
+        "description": "Training booking management system for gym system. Key features include: Booking, Subscription,...",
+        "techStack": "Vue3, Bootstrap, TypeScript, Git, Gitlab",
+        "teamSize": "5",
+        "role": "Front-end Developer",
+        "company": "Teanis Technologies",
+        "time": "Mar 2023 - Jun 2024"
+    },
+    {
+        "id": 3,
+        "name": "Bootstrap Vue Next",
+        "description": "Component library combining Vue and Bootstrap with over 1000+ stars on GitHub. Added new features to the Pagination component, updated official documentation, and fixed bugs.",
+        "techStack": "Vue3, Bootstrap, TypeScript, Git, Github",
+        "teamSize": "100+",
+        "role": "Front-end Developer",
+        "company": "Open Source",
+        "time": "Nov 2023 - Present"
+    }
+]

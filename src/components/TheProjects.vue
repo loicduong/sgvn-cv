@@ -1,44 +1,19 @@
 <script setup lang="ts">
-import TheSection from './TheSection.vue';
+import projects from '@/datas/projects.json';
 </script>
 
 <template>
-  <TheSection label="PROJECTS" style="background-color: #D1E7F9;">
+  <TheSection id="projects" label="PROJECTS" bg-color="light">
     <table class="table table-striped table-bordered">
       <tbody>
-        <tr>
-          <th style="min-width: 150px;" class="d-none d-md-block">HR Management</th>
+        <tr v-for="project in projects" :key="project.id">
           <td>
-            <div class="d-md-none">HR Management</div>
+            <h5>{{ project.name }} | {{ project.role }}</h5>
+            <h6>{{ project.company }} | {{ project.time }}</h6>
             <ul>
-              <li>Description: Human resource management system for the HR department and 100+ employees of the
-                company. Tính năng chính bao gồm: Chấm công, Nghỉ phép, Lương</li>
-              <li>Tech Stack: Vue.JS (Vue3), Bootstrap, TypeScript, Git, Gitlab</li>
-              <li>Team size: 6</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <th class="d-none d-md-block">HR Management</th>
-          <td>
-            <div class="d-md-none">HR Management</div>
-            <ul>
-              <li>Description: Human resource management system for the HR department and 100+ employees of the
-                company. Tính năng chính bao gồm: Chấm công, Nghỉ phép, Lương</li>
-              <li>Tech Stack: Vue.JS (Vue3), Bootstrap, TypeScript, Git, Gitlab</li>
-              <li>Team size: 6</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <th class="d-none d-md-block">HR Management</th>
-          <td>
-            <div class="d-md-none">HR Management</div>
-            <ul>
-              <li>Description: Human resource management system for the HR department and 100+ employees of the
-                company. Tính năng chính bao gồm: Chấm công, Nghỉ phép, Lương</li>
-              <li>Tech Stack: Vue.JS (Vue3), Bootstrap, TypeScript, Git, Gitlab</li>
-              <li>Team size: 6</li>
+              <li>Description: {{ project.description }}</li>
+              <li>Tech Stack: {{ project.techStack }}</li>
+              <li>Team size: {{ project.teamSize }}</li>
             </ul>
           </td>
         </tr>
@@ -47,12 +22,4 @@ import TheSection from './TheSection.vue';
   </TheSection>
 </template>
 
-<style scoped>
-#projects {
-  background-color: #D1E7F9;
-}
-
-li {
-  list-style-type: "- ";
-}
-</style>
+<style scoped></style>

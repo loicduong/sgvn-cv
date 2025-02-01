@@ -1,0 +1,32 @@
+[
+    {
+        "icon": "fa-briefcase",
+        "label": "Experiences",
+        "href": "#experiences"
+    },
+    {
+        "icon": "fa-laptop",
+        "label": "Projects",
+        "href": "#projects"
+    },
+    {
+        "icon": "fa-code",
+        "label": "Skills",
+        "href": "#skills"
+    },
+    {
+        "icon": "fa-graduation-cap",
+        "label": "Education",
+        "href": "#education"
+    },
+    {
+        "icon": "fa-info",
+        "label": "About",
+        "href": "#about"
+    },
+    {
+        "icon": "fa-envelope",
+        "label": "Contact",
+        "href": "#contact"
+    }
+]

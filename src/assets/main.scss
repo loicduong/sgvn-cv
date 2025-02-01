@@ -5,6 +5,9 @@
 @import "bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
+$font-family-sans-serif: 'Spectral', serif;
+$body-color: #000000;
+
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
@@ -33,4 +36,17 @@
 // 8. Add additional custom code here
 .container {
   max-width: 1000px;
+}
+
+a {
+  color: #0097d4;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+li {
+  list-style-type: '- ';
 }

@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import TheExperiences from '@/components/TheExperiences.vue';
-import TheHeader from '@/components/TheHeader.vue'
+import TheSummary from '@/components/TheSummary.vue'
 import TheProjects from '@/components/TheProjects.vue'
 import TheSkills from '@/components/TheSkills.vue'
 import TheEducation from '@/components/TheEducation.vue'
-import TheFooter from '@/components/TheFooter.vue'
+import TheContact from '@/components/TheContact.vue'
+import TheAbout from '@/components/TheAbout.vue'
 </script>
 
 <template>
   <main>
-    <TheHeader />
+    <TheSummary />
     <TheExperiences />
     <TheProjects />
     <TheSkills />
     <TheEducation />
-    <TheFooter />
+    <TheAbout />
+    <TheContact />
   </main>
 </template>

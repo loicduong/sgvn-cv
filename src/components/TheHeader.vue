@@ -1,113 +1,57 @@
 <script setup lang="ts">
-import TheNav from './TheNav.vue'
-import TheNavMobile from './TheNavMobile.vue'
-import { onMounted, onUnmounted, ref } from 'vue'
-
 const initialPosition = ref(0)
 
-const handleScroll = () => {
-  const nav = document.querySelector('.sticky-nav')
-  if (!nav) return
+const header = useTemplateRef('header')
 
-  // Lưu vị trí ban đầu của navbar nếu chưa có
+function handleScroll() {
+  if (!header.value) return
+
   if (initialPosition.value === 0) {
-    initialPosition.value = nav.offsetTop
+    initialPosition.value = header.value.offsetTop
   }
 
   if (window.scrollY >= initialPosition.value) {
-    nav.classList.add('fixed')
-    // Thêm padding để tránh nhảy layout
-    document.body.style.paddingTop = `${nav.offsetHeight}px`
+    header.value.classList.add('is-fixed')
   } else {
-    nav.classList.remove('fixed')
+    header.value.classList.remove('is-fixed')
     document.body.style.paddingTop = '0'
   }
 }
 
 onMounted(() => {
-  // Lưu vị trí ban đầu sau khi component được mount
-  const nav = document.querySelector('.sticky-nav')
-  if (nav) {
-    initialPosition.value = nav.offsetTop
+  if (header.value) {
+    initialPosition.value = header.value.offsetTop
   }
-  window.addEventListener('scroll', handleScroll)
-})
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
+  useEventListener(window, 'scroll', handleScroll)
 })
 </script>
 
 <template>
-  <header class="v-header relative" id="myHeader">
-    <div class="fullscren-video-wrap">
-      <img src="@/assets/bg.webp" alt="logo" class="image_ratio">
-    </div>
+  <div ref="header" class="sgvn-header w-full position-absolute bottom-0 start-0 end-0 z-1">
     <div class="container">
-      <div class="header-container">
-        <h1>Duong Phuoc Loc</h1>
-        <p>Front-end Developer</p>
+      <div class="sgvn-header__content d-flex align-items-center justify-content-between">
+        <TheNav class="d-none d-md-flex" />
+        <TheNavMobile class="d-md-none ms-auto" />
       </div>
     </div>
-    <div class="sticky-nav w-full top-0" style="z-index: 1000; background-color: #00295B;">
-      <div class="container">
-        <div class="a d-flex align-items-center justify-content-between">
-          <TheNav class="d-none d-md-flex" />
-          <TheNavMobile class="d-md-none ms-auto" />
-        </div>
-      </div>
-    </div>
-  </header>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.sticky-nav {
-  width: 100%;
-  z-index: 1000;
+.sgvn-header {
+  background-color: #00295B;
 
-  &.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
+  &.is-fixed {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: unset !important;
+    left: 0 !important;
+    z-index: 1 !important;
   }
 }
 
-.v-header {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #fff;
-}
-
-.fullscren-video-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -5;
-}
-
-.image_ratio {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.header-container {
-  z-index: 0;
-  left: 0;
-  text-align: left;
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 20vh;
-}
-
-.a {
+.sgvn-header__content {
   height: 58px;
 
   @media screen and (min-width: 768px) {

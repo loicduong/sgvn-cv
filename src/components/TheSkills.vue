@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import TheSection from './TheSection.vue';
+import skills from '@/datas/skills.json'
 </script>
 
 <template>
-  <TheSection label="SKILLS">
-    <div class="d-flex justify-content-center">Vue.JS | TypeScript | Bootstrap | Git | Gitlab | Github </div>
+  <TheSection id="skills" label="SKILLS">
+    <div class="d-flex flex-column justify-content-center text-center">
+      <div v-for="skill in skills" :key="skill.name">
+        <span class="fw-bold">{{ skill.name }}: </span> {{ skill.skills.join(', ') }}
+      </div>
+    </div>
   </TheSection>
 </template>
 

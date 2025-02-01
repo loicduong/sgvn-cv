@@ -9,7 +9,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="stg-nav-item d-flex flex-column align-items-center cursor-pointer">
+  <div class="sgvn-nav-item d-flex flex-column align-items-center cursor-pointer">
     <RouterLink :to="href">
       <FontAwesomeIcon :icon="icon" />
       <span>{{ label }}</span>
@@ -18,17 +18,17 @@ defineProps<Props>()
 </template>
 
 <style scoped>
-.stg-nav-item {
+.sgvn-nav-item {
   cursor: pointer;
   border-right: 1px #365670 dotted;
   flex: 1;
 }
 
-.stg-nav-item:last-child {
+.sgvn-nav-item:last-child {
   border-right: none;
 }
 
-.stg-nav-item a {
+.sgvn-nav-item a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,11 +42,11 @@ defineProps<Props>()
   min-width: 13.4%;
 }
 
-.stg-nav-item a:hover {
+.sgvn-nav-item a:hover {
   color: #F6A515;
 }
 
-.stg-nav-item a:hover span {
+.sgvn-nav-item a:hover span {
   background-color: #00295B;
 }
 </style>

@@ -1,87 +1,149 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import TheNavIcon from './TheNavIcon.vue'
-
-const navItems = [
-  { icon: 'fa-briefcase', label: 'Experiences', href: '/#experiences' },
-  { icon: 'fa-laptop', label: 'Projects', href: '/#projects' },
-  { icon: 'fa-code', label: 'Skills', href: '/#skills' },
-  { icon: 'fa-graduation-cap', label: 'Education', href: '/#education' },
-  { icon: 'fa-envelope', label: 'Contact', href: '/#contact' },
-]
-
+import nav from '@/datas/nav.json'
 
 const isOpen = ref(false);
+
+const isTop = ref(false);
+
+const navMobile = useTemplateRef('nav-mobile');
+
+function setNavPosition() {
+  const navRect = navMobile.value!.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+  const spaceBelow = windowHeight - navRect.bottom;
+  isTop.value = spaceBelow < 160;
+}
+
+function showNav() {
+  isOpen.value = !isOpen.value;
+  setNavPosition();
+}
+
+onMounted(() => {
+  useEventListener(window, 'scroll', setNavPosition);
+});
 </script>
 
 <template>
-
-  <div class="nav-mobile" :class="{ 'is-active': isOpen }" style="margin-right: -12px;">
-    <div class="d-flex justify-content-center align-items-center"
-      style="border-bottom-left-radius: 32px;position: relative; z-index: 2; width: 45px; height: 45px; font-size: 24px; background-color: #00295B;">
-      <TheNavIcon id="nav-icon4" :class="{ 'open': isOpen }" @click="isOpen = !isOpen" />
+  <div ref="nav-mobile" class="sgvn-nav-mobile position-relative" :class="{ 'is-active': isOpen, 'is-top': isTop }">
+    <div class="sgvn-nav-mobile__btn d-flex justify-content-center align-items-center position-relative">
+      <TheNavIcon :class="{ 'is-open': isOpen }" @click="showNav" />
     </div>
-    <RouterLink v-for="(item, index) in navItems" :to="item.href" :key="index" class="nav-mobile-item"
-      :class="'nav-mobile-item-' + (index + 1)">
+    <RouterLink v-for="(item, index) in nav" :to="{ hash: item.href }" :key="index" class="sgvn-nav-mobile__item"
+      @click="isOpen = false" :class="'sgvn-nav-mobile__item-' + (index + 1)">
       <FontAwesomeIcon :icon="'fa-solid ' + item.icon" />
     </RouterLink>
   </div>
 </template>
 
 <style scoped>
-.nav-mobile {
-  position: relative;
+.sgvn-nav-mobile {
+  margin-right: -12px;
 }
 
-.nav-mobile-item {
+.sgvn-nav-mobile__btn {
+  border-bottom-left-radius: 32px;
+  z-index: 2;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  background-color: #00295B;
+}
+
+.sgvn-nav-mobile__item {
   top: 0;
   right: 0;
   width: 45px;
   height: 45px;
-  color: #fff;
   font-size: 24px;
-  -webkit-transform: none;
+  color: #fff;
   transform: none;
   line-height: 45px;
   border-radius: 50%;
   position: absolute;
   text-align: center;
-  -webkit-transition: all .3s cubic-bezier(.68, 1.55, .265, 1);
   transition: all .3s cubic-bezier(.68, 1.55, .265, 1);
   z-index: 1;
+  opacity: 0;
 }
 
-.is-active .nav-mobile-item-1 {
-  transform: translate(-110px, 0px);
+.is-active .sgvn-nav-mobile__item {
+  opacity: 1;
 }
 
-.is-active .nav-mobile-item-2 {
-  transform: translate(-95px, 35px);
+.is-active .sgvn-nav-mobile__item-1 {
+  transform: translate(-140px, 0px);
 }
 
-.is-active .nav-mobile-item-3 {
-  transform: translate(-70px, 65px);
+.is-active .sgvn-nav-mobile__item-2 {
+  transform: translate(-130px, 40px);
 }
 
-.is-active .nav-mobile-item-4 {
-  transform: translate(-35px, 90px);
+.is-active .sgvn-nav-mobile__item-3 {
+  transform: translate(-105px, 75px);
 }
 
-.is-active .nav-mobile-item-5 {
-  transform: translate(0px, 100px);
+.is-active .sgvn-nav-mobile__item-4 {
+  transform: translate(-75px, 105px);
 }
 
-.nav-mobile-content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 160px;
-  height: 160px;
-  background-color: #00295B;
-  border-bottom-left-radius: 200px;
+.is-active .sgvn-nav-mobile__item-5 {
+  transform: translate(-40px, 130px);
 }
 
-.nav-mobile:after {
+.is-active .sgvn-nav-mobile__item-6 {
+  transform: translate(0px, 140px);
+}
+
+.is-top .is-active .sgvn-nav-mobile__item {
+  opacity: 1;
+}
+
+.is-active .sgvn-nav-mobile__item-1 {
+  transform: translate(-140px, 0px);
+}
+
+.is-active .sgvn-nav-mobile__item-2 {
+  transform: translate(-130px, 40px);
+}
+
+.is-active .sgvn-nav-mobile__item-3 {
+  transform: translate(-105px, 75px);
+}
+
+.is-active .sgvn-nav-mobile__item-4 {
+  transform: translate(-75px, 105px);
+}
+
+.is-active .sgvn-nav-mobile__item-5 {
+  transform: translate(-40px, 130px);
+}
+
+.is-top.is-active .sgvn-nav-mobile__item-1 {
+  transform: translate(-140px, 0px);
+}
+
+.is-top.is-active .sgvn-nav-mobile__item-2 {
+  transform: translate(-130px, -40px);
+}
+
+.is-top.is-active .sgvn-nav-mobile__item-3 {
+  transform: translate(-110px, -75px);
+}
+
+.is-top.is-active .sgvn-nav-mobile__item-4 {
+  transform: translate(-75px, -110px);
+}
+
+.is-top.is-active .sgvn-nav-mobile__item-5 {
+  transform: translate(-40px, -130px);
+}
+
+.is-top.is-active .sgvn-nav-mobile__item-6 {
+  transform: translate(0px, -140px);
+}
+
+.sgvn-nav-mobile:after {
   top: -5px;
   left: 0;
   content: '';
@@ -94,9 +156,16 @@ const isOpen = ref(false);
   transition: all .1s ease-in-out 0s;
 }
 
-.nav-mobile.is-active:after {
-  left: -115px;
-  width: 160px;
-  height: 160px;
+.sgvn-nav-mobile.is-top:after {
+  top: unset;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 200px;
+  bottom: -5px;
+}
+
+.sgvn-nav-mobile.is-active:after {
+  left: -155px;
+  width: 200px;
+  height: 200px;
 }
 </style>

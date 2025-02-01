@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import TheSection from './TheSection.vue';
+import education from '@/datas/education.json'
 </script>
 
 <template>
-  <TheSection label="EDUCATION" style="background-color: #D1E7F9;">
-    <div class="d-flex justify-content-center">
+  <TheSection id="education" label="EDUCATION" bg-color="light">
+    <div v-for="item in education" class="d-flex justify-content-center text-center">
       <div>
-        <span class="fw-medium">Information Technology </span>
-        <span>| Can Tho University | 2020</span>
+        <span class="fw-bold">{{ item.degree }} | </span>
+        <span>{{ item.school }} | {{ item.year }}</span>
       </div>
     </div>
   </TheSection>
