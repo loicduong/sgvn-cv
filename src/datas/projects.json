@@ -7,6 +7,7 @@
         "teamSize": "6",
         "role": "Front-end Developer",
         "company": "Teanis Technologies",
+        "companyUrl": "https://teanis.com",
         "time": "Jul 2021 - Present"
     },
     {
@@ -17,16 +18,19 @@
         "teamSize": "5",
         "role": "Front-end Developer",
         "company": "Teanis Technologies",
+        "companyUrl": "https://teanis.com",
         "time": "Mar 2023 - Jun 2024"
     },
     {
         "id": 3,
         "name": "Bootstrap Vue Next",
+        "url": "https://github.com/bootstrap-vue-next/bootstrap-vue-next/pulls?q=is%3Apr+author%3Aloicduong+is%3Aclosed",
         "description": "Component library combining Vue and Bootstrap with over 1000+ stars on GitHub. Added new features to the Pagination component, updated official documentation, and fixed bugs.",
         "techStack": "Vue3, Bootstrap, TypeScript, Git, Github",
         "teamSize": "100+",
         "role": "Front-end Developer",
         "company": "Open Source",
+        "companyUrl": "https://github.com/bootstrap-vue-next/bootstrap-vue-next",
         "time": "Nov 2023 - Present"
     }
 ]

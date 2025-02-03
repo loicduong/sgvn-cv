@@ -39,11 +39,12 @@ $body-color: #000000;
 }
 
 a {
-  color: #0097d4;
-  text-decoration: none;
+  color: inherit;
+  text-decoration: underline;
+
 
   &:hover {
-    text-decoration: underline;
+    color: #0097d4;
   }
 }
 

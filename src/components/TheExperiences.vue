@@ -6,7 +6,8 @@ import experiences from '@/datas/experiences.json';
   <TheSection label="EXPERIENCES" id="experiences">
     <div v-for="experience in experiences" :key="experience.id">
       <h3>{{ experience.name }}</h3>
-      <h6><span>{{ experience.company }}</span> | <span>{{ experience.time }}</span></h6>
+      <h6><span><a :href="experience.companyUrl" target="_blank">{{ experience.company }}</a></span> | <span>{{
+        experience.time }}</span></h6>
       <ul class="description">
         <li v-for="description in experience.description" :key="description">{{ description }}</li>
       </ul>

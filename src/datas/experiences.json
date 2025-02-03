@@ -3,6 +3,7 @@
         "id": 1,
         "name": "Front-end Developer",
         "company": "Teanis Technologies",
+        "companyUrl": "https://teanis.com",
         "time": "Apr 2021 - Present",
         "description": [
             "Improved web application performance by developing highly reusable Vue.JS components, optimizing user experience and reducing page load times.",
